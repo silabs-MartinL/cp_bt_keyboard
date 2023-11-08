@@ -37,15 +37,48 @@ import board
 from adafruit_neotrellis.neotrellis import NeoTrellis
 
 # Constants
-TIME_SYNC = 0.02 # NeoTrellis sync, buttons can only be read every 17ms, allow a bit longer
+PIXELS = 16
+HUE = 0
+SAT = 1
+VAL = 2
 
-# Application class
-class App():
+# Pixel class
+class Pixel():
 
     # Initialisation
-    def __init__(self):
-        # Open I2C
-        self.i2c = board.I2C()
+    def __init__(self, current_hsv, target_hsv, step_count):
+        # Initialise data
+        self.current_hsv = None
+        self.target_hsv = None
+        self.steps = None
+        # Set color
+        self.set(current_hsv, target_hsv, step_count)
+
+    # Set function
+    def set(self, current_hsv, target_hsv, step_count):
+        # Validation limit value from 0.0 to 1.0
+        for i in range(3):
+            if current_hsv[i] > 1.0 current_hsv[i] = 1.0
+            if target_hsv[i] > 1.0 target_hsv[i] = 1.0
+            if current_hsv[i] < 0.0 current_hsv[i] = 0.0
+            if target_hsv[i] < 0.0 target_hsv[i] = 0.0
+
+
+
+# Pixels class
+class Pixels():
+
+    # Initialisation
+    def __init__(self, trellis):
+        # Initialise data
+        self.trellis = trellis
+        self.pixels = []
+
+
+       
+
+
+
         # Create NeoTrellis class
         self.trellis = NeoTrellis(self.i2c)
         # Set the brightness value (0 to 1.0)

@@ -19,3 +19,5 @@ Step 1 is simply the example application available in the CircuitPython Adafruit
 ## Resources
 
 [Adafruit: BLE HID Keyboard Buttons with CircuitPython](https://learn.adafruit.com/ble-hid-keyboard-buttons-with-circuitpython/overview)
+
+https://github.com/pimoroni/pmk-circuitpython/blob/main/lib/pmk/__init__.py HSV to RGB code
